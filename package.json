@@ -5,7 +5,7 @@
   "author": "Muhammad Jahanzeb",
   "license": "MIT",
   "scripts": {
-  	"app": "node index.js"
+  	"start": "node index.js"
   },	
   "dependencies": {
     "ejs": "^2.5.7",
