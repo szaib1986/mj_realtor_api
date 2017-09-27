@@ -6,7 +6,6 @@ const express = require('express'),
 	bodyParser = require('body-parser'),
 	routeConfigurator =  require('./lib/routes/RouteConfigurator'),
 	router = express.Router;
-
 	const app = new express();
 
 	app.use(bodyParser.json());
@@ -20,8 +19,6 @@ const express = require('express'),
 	app.set('secret-api-key', config.secretKey);
 
 	routeConfigurator.setupRoutes(app, router);	
-	
-	
 	
 	app.listen(config.port, () => {
 		console.log('Magic happening at ', config.port);
