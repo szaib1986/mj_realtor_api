@@ -1,0 +1,11 @@
+{
+  "name": "realtorapi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Muhammad Jahanzeb",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.15.5"
+  }
+}
