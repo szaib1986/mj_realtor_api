@@ -1,16 +1,38 @@
 console.log('Application starting...');
-const express = require('express');
+const express = require('express'),
+	cluster = require('cluster'),
+	config = require('./configuration');
 
-const app = new express();
+if (cluster.isMaster){
+	const numWorkers = require('os').cpus().length;
 
-app.use(express.static('public'));
+	for (let i = 0; i < numWorkers; i++)
+		cluster.fork();
 
-app.set('view engine', 'ejs');
+	cluster.on('online', function(worker) {
+        console.log('Worker ' + worker.process.pid + ' is online');
+    });
 
-app.get('/*', (req, res) => {
-	res.render('index');
-});
+    cluster.on('exit', function(worker, code, signal) {
+        console.log('Worker ' + worker.process.pid + ' died with code: ' + code + ', and signal: ' + signal);
+        console.log('Starting a new worker');
+        cluster.fork();
+    });
+}
+else {
 
-app.listen(8080, () => {
-	console.log('Magic happening at 3000');
-});
+	const app = new express();
+
+	app.use(express.static('public'));
+	
+	app.set('view engine',	 'ejs');
+	
+	app.get('/*', (req, res) => {
+		res.render('index');
+	});
+	
+	app.listen(config.port, () => {
+		console.log('Magic happening at 3000');
+	});
+
+}
