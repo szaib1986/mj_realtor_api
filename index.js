@@ -5,18 +5,20 @@ const express = require('express'),
 	cors = require('cors'),
 	bodyParser = require('body-parser'),
 	routeConfigurator =  require('./lib/routes/RouteConfigurator'),
-	router = express.Router;
+	router = express.Router();
 	const app = new express();
 
 	app.use(bodyParser.json());
 
 	app.use(bodyParser.urlencoded({ extended: true }));
 
+	app.use(cors());
+
 	app.use(express.static('public'));
 	
 	app.set('view engine',	 'ejs');
 
-	app.set('secret-api-key', config.secretKey);
+	app.set('secret-api-key', config.secretTokenKey);
 
 	routeConfigurator.setupRoutes(app, router);	
 	
