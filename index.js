@@ -5,8 +5,11 @@ const express = require('express'),
 	cors = require('cors'),
 	bodyParser = require('body-parser'),
 	routeConfigurator =  require('./lib/routes/RouteConfigurator'),
-	router = express.Router();
+	router = express.Router(),
+	connection = require('./db/connection');
 	const app = new express();
+
+	connection.connect(app);
 
 	app.use(bodyParser.json());
 
