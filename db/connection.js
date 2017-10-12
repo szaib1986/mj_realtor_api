@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 const schemaModelPaths = [
-	'./schemas/User.js'
+	'./schemas/User.js',
+	'./schemas/Property.js'
 ];
 
 module.exports = {
@@ -20,8 +21,6 @@ module.exports = {
 		this._db = connection;
 		
 		this._registerSchemas();
-
-
 	},
 	_registerSchemas: function() {
 		const self = this;

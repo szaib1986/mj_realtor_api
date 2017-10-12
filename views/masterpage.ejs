@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<% include ./partials/head %>
+</head>
+<body>
+	<div class="wrapper">
+    <% include ./partials/sidebar %>
+
+    <div class="main-panel">
+
+        <% include ./partials/topnav %> 
+
+        <div class="content">
+            <div class="container-fluid">
+                <%- include('./pages/'+ pageName) %>
+            </div>
+        </div>
+
+
+        <% include ./partials/footer %>
+
+    </div>
+</div>
+<!--   Core JS Files   -->
+   <% include ./partials/footerscripts %>
+
+
+</body>
+</html>

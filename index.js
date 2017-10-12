@@ -7,6 +7,7 @@ const express = require('express'),
 	routeConfigurator =  require('./lib/routes/RouteConfigurator'),
 	router = express.Router(),
 	connection = require('./db/connection');
+	
 	const app = new express();
 
 	connection.connect(app);
